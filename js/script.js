@@ -7,27 +7,19 @@ let operators = document.querySelectorAll('.operator');
 
 
 
-// for output
-let outputFunc = (num) => {
-	output.value += num
-}
-
+// for output the value of tapped btn
+let outputFunc = (num) => output.value += num;
 
 
 // for clear whole output
-let allClearFunc = () => {
-	output.value = ''
-}
-allClear.addEventListener('click', () => allClearFunc())
+let allClearFunc = () => output.value = '';
+allClear.addEventListener('click', () => allClearFunc());
  
 
 
-// for clear last of output
-let clearFunc = () => {
-	output.value = output.value.substring(0, output.value.length - 1) 
-}
-clear.addEventListener('click', () => clearFunc())
-
+// for clear last symbol of output
+let clearFunc = () => output.value = output.value.substring(0, output.value.length - 1);
+clear.addEventListener('click', () => clearFunc());
 
 
 
@@ -45,11 +37,11 @@ equals.addEventListener('click', () => equalsFunc())
 nums.forEach(num => num.addEventListener('click', () => outputFunc(num.innerHTML)))
 
 
+// you cannot tap operator second time and if output is empty  
 operators.forEach(op => {
 	op.addEventListener('click', () => {
-		if(output.value[output.value.length - 1] != op){
-			console.log(output.value[output.value.length - 1]);
-			outputFunc(op.innerHTML) 
+		if(output.value && output.value[output.value.length - 1] != op.innerHTML){
+			outputFunc(op.innerHTML)
 		}
 	})
 })
